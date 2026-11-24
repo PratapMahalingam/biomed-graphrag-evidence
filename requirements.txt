@@ -1,0 +1,10 @@
+# core + tests (enough for the synthetic smoke test and CI)
+numpy>=2.0
+scipy>=1.13
+scikit-learn>=1.5
+fastapi>=0.110
+pydantic>=2.6
+httpx>=0.27
+uvicorn>=0.29
+matplotlib>=3.8
+pytest>=8.0

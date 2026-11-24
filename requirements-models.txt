@@ -1,0 +1,6 @@
+# real-data run: dense encoders, cross-encoder and NER
+-r requirements.txt
+torch>=2.3
+transformers>=4.44
+sentence-transformers>=3.0
+spacy>=3.7,<3.9

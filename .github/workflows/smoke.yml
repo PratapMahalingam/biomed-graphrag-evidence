@@ -1,0 +1,20 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Unit and end-to-end tests (synthetic)
+        run: pytest -q
+      - name: Smoke test on synthetic data (checks that the code runs; says nothing about results)
+        run: |
+          set -euo pipefail
+          python scripts/make_synthetic.py --out data/synthetic
+          python scripts/run_experiment.py --data-dir data/synthetic --out results/synthetic_smoke --smoke --n-null-first 20 --n-null-rerank 3 --n-null-curve 5
+          test -f results/synthetic_smoke/metrics.json

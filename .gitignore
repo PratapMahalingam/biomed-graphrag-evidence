@@ -1,0 +1,11 @@
+data/
+models/
+cache/
+results/synthetic_smoke/
+__pycache__/
+.pytest_cache/
+.venv/
+*.npy
+*.pkl
+.claude/
+CLAUDE.md
